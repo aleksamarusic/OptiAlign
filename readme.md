@@ -1,6 +1,6 @@
-# OptiAlign: Natively Intelligent Optical Automation
+# AlaynTechnologies: Natively Intelligent Optical Automation
 
-**OptiAlign** is the first fully integrated, natively smart optical hardware ecosystem. By co-designing proprietary smart kinematic mounts with a Software-Defined MIMO orchestration layer, we turn weeks of manual laser alignment into 45 seconds of autonomous execution.
+**AlaynTechnologies** is the first fully integrated, natively smart optical hardware ecosystem. By co-designing proprietary smart kinematic mounts with a Software-Defined MIMO orchestration layer, we turn weeks of manual laser alignment into 45 seconds of autonomous execution.
 
 
 
@@ -31,6 +31,45 @@ We have implemented a rigorous **Digital Twin** to prove our math:
 * **Verification:** The simulation proves our algorithms effectively control a cascaded system before we even mount the hardware.
 * **3D model and visualization:** Blender script that creates laser, adjustable mirror and hardware device that will turn the knob on the mirroe. Rendered simulation to show how it works.
 * **Verification:** Science backed technology, with technical plan / roadmap built to support our solution.
+
+## ⚙️ Installation & Usage - Software simulation
+
+### Prerequisites
+* Python 3.10+
+* Git
+* C++ Build Tools (required for `LightPipes` compilation)
+
+### Setup
+1. Clone the repository:
+    git clone [https://github.com/aleksamarusic/AlaynTechnologies.git](https://github.com/aleksamarusic/AlaynTechnologies.git)
+    cd AlaynTechnologies
+
+2. Create and activate a virtual environment:
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+3. Install dependencies:
+    pip install -r requirements.txt
+
+4. Run the software simulation:
+    python alignment_software_simulation.py
+
+
+## ⚙️ Installation & Usage - Hardware simulation
+
+### Prerequisites
+* Blender 5.1
+* Git
+
+### Setup
+1. Clone the repository:
+    git clone [https://github.com/aleksamarusic/AlaynTechnologies.git](https://github.com/aleksamarusic/AlaynTechnologies.git)
+    cd AlaynTechnologies
+
+2. Install dependencies:
+    [Download and install Blender](https://www.blender.org/download/)
+
+4. Run Blender, go to scripting, open blender_animation_script.py and run
 
 ---
 *Built for the Paris Builds Hackathon (June 2026).*

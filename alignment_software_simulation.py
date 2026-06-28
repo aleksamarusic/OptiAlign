@@ -199,20 +199,19 @@ class AlignWorker(QThread):
     def __init__(self, start_params):
         super().__init__()
         self.base = dict(start_params)        # focal length held fixed
-        # If the beam is effectively lost (no usable centroid signal: not finite,
-        # or a near-zero peak from undersampling), there is no gradient to follow,
-        # so recover from the aligned neutral instead of the current point.
-        r0 = simulate(start_params)
-        lost = (not r0.ok) or (r0.peak < 0.15 * PEAK_REF)
         # Solve from the aligned origin (zero tilt/offset).  Centring the centroid
         # is degenerate -- many tilt combinations cancel at the detector but leave
         # the beam path zig-zagging off-axis -- so searching from the origin
         # converges to the *minimal-tilt* solution, which lands the bench beam (not
         # just the heatmap) on the detector centre.
         self.x0 = np.zeros(len(FREE))
-        # The glide still starts from the real misaligned sliders (or the neutral,
-        # if the beam was lost and there is nothing meaningful to glide from).
-        self.anim_start = unpack(self.x0, self.base) if lost else dict(start_params)
+        # The glide animates from the real misaligned start so the full walk-in is
+        # visible.  Only fall back to the neutral if the start frame is genuinely
+        # non-finite -- a merely dim/defocused (low-peak) beam is still perfectly
+        # good to glide from, and collapsing it here made the animation jump
+        # straight to centre for large-offset resets.
+        r0 = simulate(start_params)
+        self.anim_start = dict(start_params) if r0.ok else unpack(self.x0, self.base)
 
     def _solve(self):
         """Find the aligned solution silently (no animation emitted)."""
