@@ -12,7 +12,7 @@ Aligning a multi-mirror optical train is a non-linear physics problem—adjustin
 ## 💡 The Full-Stack Solution
 OptiAlign removes the bottleneck by providing both the hardware and the brain:
 1. **Smart Kinematic Mounts:** Our custom motorized holders use a **Reaction Wheel (Momentum Wheel) mechanism**. By spinning an internal rotor, we exert torque directly on the micrometer knob. This eliminates "axial binding" and removes the need for physical bracing against the optical table.
-2. **Software-Defined MIMO Controller:** Our optimization agent uses **Bayesian Optimization** to calculate the simultaneous adjustments needed across the entire optical train, treating the setup as a coordinated system rather than a series of independent knobs.
+2. **Software-Defined MIMO Controller:** Our optimization agent uses **Nelder-Mead Optimization** to calculate the simultaneous adjustments needed across the entire optical train, treating the setup as a coordinated system rather than a series of independent knobs.
 
 ## ⚙️ How It Works (The Physics)
 The system leverages the **Conservation of Angular Momentum**:
